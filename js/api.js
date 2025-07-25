@@ -409,22 +409,18 @@ function getMonthsInRange(startDate, endDate) {
 document.addEventListener('DOMContentLoaded', () => {
     fetchTags();
 
-    // Add event listener to the filter button
     document.getElementById('filterButton').addEventListener('click', () => {
         const startDate = document.getElementById('startDate').value;
         const endDate = document.getElementById('endDate').value;
         if (startDate && endDate) {
             fetchTags(startDate, endDate);
-        } else {
-            alert('Please select both start and end dates.');
         }
     });
 
-    // Add event listener to the reset button
     document.getElementById('resetButton').addEventListener('click', () => {
         document.getElementById('startDate').value = '';
         document.getElementById('endDate').value = '';
-        fetchTags(); // Reset to default date range
+        fetchTags(); // Reset to default range
     });
 });
 
