@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>404 - Page Not Found</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/body.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+        .error-container {
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .error-container h1 {
+            font-size: 3em;
+            color: #ff0000;
+        }
+        .error-container p {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        .error-container a {
+            background: #ffcc00;
+            color: #1e1e1e;
+            padding: 12px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .error-container a:hover {
+            background: #e6b800;
+        }
+    </style>
+</head>
+<body>
+        <header>
+            <nav class="navbar">
+                <button class="hamburger" aria-label="Open navigation" aria-controls="navbar-menu" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <ul id="navbar-menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../pages/theory/theory.html">Theory Work</a></li>
+                    <li><a href="../pages/dataart/dataart.html">Data</a></li>
+                    <li><a href="../pages/design/design.html">Design</a></li>
+                </ul>
+            </nav>
+            <section class="accessibility-controls">
+                <button id="contrastToggle" aria-label="Toggle high contrast mode">Contrast</button>
+                <select id="languageSelect" aria-label="Select language">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                    <option value="de">Deutsch</option>
+                </select>
+                <button id="colorInvertToggle" aria-label="Invert site colors">Invert Colors</button>
+            </section>
+        </header>
+        <main class="error-container">
+            <h1 data-lang-en="404 - Page Not Found" data-lang-es="404 - Página no encontrada" data-lang-fr="404 - Page non trouvée" data-lang-de="404 - Seite nicht gefunden">404 - Page Not Found</h1>
+            <p data-lang-en="Sorry, the page you are looking for does not exist." data-lang-es="Lo sentimos, la página que buscas no existe." data-lang-fr="Désolé, la page que vous recherchez n'existe pas." data-lang-de="Entschuldigung, die Seite, die Sie suchen, existiert nicht.">Sorry, the page you are looking for does not exist.</p>
+            <a href="../index.html" data-lang-en="Go Home" data-lang-es="Ir a Inicio" data-lang-fr="Accueil" data-lang-de="Zur Startseite">Go Home</a>
+        </main>
+        <footer>
+            <p>&copy; 2024 Game Dex. All rights reserved.</p>
+            <section class="social-links">
+                <a href="https://www.example.com">Facebook</a>
+                <a href="https://www.example.com">Twitter</a>
+                <a href="https://www.example.com">Instagram</a>
+            </section>
+        </footer>
+        <script>
+        // Hamburger menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navbarMenu = document.getElementById('navbar-menu');
+            hamburger.addEventListener('click', function() {
+                const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+                hamburger.setAttribute('aria-expanded', !expanded);
+                navbarMenu.classList.toggle('open');
+            });
+        });
+        // Accessibility: Contrast toggle
+        document.getElementById('contrastToggle').addEventListener('click', function() {
+            document.body.classList.toggle('high-contrast');
+        });
+        // Accessibility: Color invert toggle
+        document.getElementById('colorInvertToggle').addEventListener('click', function() {
+            document.body.classList.toggle('invert-colors');
+        });
+        // Accessibility: Language swap
+        document.getElementById('languageSelect').addEventListener('change', function(e) {
+            const lang = e.target.value;
+            document.querySelectorAll('[data-lang-en]').forEach(function(el) {
+                if (el.dataset['lang' + lang.charAt(0).toUpperCase() + lang.slice(1)]) {
+                    el.textContent = el.dataset['lang' + lang.charAt(0).toUpperCase() + lang.slice(1)];
+                } else {
+                    el.textContent = el.dataset['langEn'];
+                }
+            });
+        });
+        </script>
+    </body>
+</html>

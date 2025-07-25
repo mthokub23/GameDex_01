@@ -1,0 +1,326 @@
+/* Universal Box Sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Body and Typography */
+body {
+  font-family: 'Roboto', sans-serif; 
+  line-height: 1.6; /* Improve readability */
+  color: #ffffff; /* Ensures all text on the site is white */
+  background-color: #1e1e1e; 
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+/* Accessibility: High Contrast Mode */
+body.high-contrast {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+body.high-contrast .navbar,
+body.high-contrast footer {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+body.high-contrast a,
+body.high-contrast .navbar a {
+  color: #ffcc00 !important;
+  background: #000 !important;
+}
+
+body.high-contrast .card,
+body.high-contrast .card-grid {
+  background-color: #111 !important;
+  color: #fff !important;
+}
+
+body.high-contrast .accessibility-controls button,
+body.high-contrast .accessibility-controls select {
+  background: #ffcc00 !important;
+  color: #000 !important;
+}
+
+/* Accessibility: Invert Colors Mode */
+body.invert-colors {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+body.invert-colors img,
+body.invert-colors video {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Hamburger Menu Styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
+}
+.hamburger .bar {
+  width: 30px;
+  height: 4px;
+  background-color: #ffcc00;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+@media (max-width: 900px) {
+  .hamburger {
+    display: flex;
+  }
+  .navbar ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100vw;
+    background: #333;
+    z-index: 1001;
+    padding: 0;
+  }
+  .navbar ul.open {
+    display: flex;
+  }
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: rgba(51, 51, 51, 0.9); /* Dark background for navbar */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  position: sticky;
+  top: 0;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  z-index: 1000;
+}
+
+.navbar .logo {
+  width: 50px; /* Adjust size as needed */
+  height: auto;
+  margin-right: auto; /* Pushes the logo to the farthest left */
+  vertical-align: left;
+}
+
+.navbar a.active {
+    background-color: #ffcc00; /* Bright background to highlight */
+    color: #1e1e1e; /* Dark text for contrast */
+    border-radius: 4px;
+    padding: 8px 12px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .logo img {
+  max-height: 50px; /* Adjust the height as needed */
+  width: auto; /* Maintain aspect ratio */
+  transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.navbar .logo img:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+.navbar.scrolled {
+  background-color: rgba(51, 51, 51, 0.5); 
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  padding: 14px 20px;
+  display: block;
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.navbar a:hover {
+  background-color: #ffcc00; /* Bright color on hover */
+  color: #1e1e1e; /* Dark text on hover */
+}
+
+.navbar ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+/* Responsive adjustments for navbar */
+@media (max-width: 768px) {
+  .navbar a {
+      font-size: 0.9rem; /* Smaller font size for medium screens */
+      padding: 12px 15px; /* Adjust padding */
+  }
+}
+
+/* Back to Top Button */
+#back-to-top {
+  display: none; /* Hidden by default */
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 1000;
+  background-color: #ffcc00;
+  color: #1e1e1e; /* Dark text for contrast */
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.5em;
+  cursor: pointer;
+  border-radius: 4px; /* Slight rounding for the button */
+  transition: opacity 0.3s ease; /* Smooth transition for visibility */
+}
+
+#back-to-top:hover {
+  background-color: #e6b800; /* Slightly darker on hover */
+}
+
+@media (max-width: 768px) {
+  #back-to-top {
+    padding: 8px 16px; /* Adjust padding for smaller devices */
+    font-size: 1.2em; /* Smaller font size */
+  }
+}
+
+#back-to-top:hover {
+    background-color: #e6b800; /* Slightly darker on hover */
+}
+
+/* Links */
+a {
+  color: #ffcc00; /* Bright color for links */
+  text-decoration: none;
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+a:hover {
+  color: #e6b800; /* Slightly darker on hover */
+}
+
+/* Images */
+img {
+  max-width: 100%; /* Responsive images */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Utility Classes */
+.container {
+  max-width: 1200px; /* Max container width */
+  margin: 0 auto; /* Center align the container */
+  padding: 0 15px; /* Padding on smaller screens */
+}
+
+/* Footer Styling */
+footer {
+  background-color: #333; /* Dark background for footer */
+  padding: 20px 0;
+  text-align: center;
+  margin-top: auto;
+}
+
+footer p {
+  margin-bottom: 10px;
+  color: #ffffff; /* White text for footer */
+}
+
+.social-links a {
+  margin: 0 10px;
+  color: #cccccc; /* Light grey for social links */
+}
+
+.social-links a:hover {
+  color: #ffcc00; /* Bright color on hover */
+}
+
+/* Writing and Theory Sections */
+#content {
+  background-color: #2e2e2e; /* Dark background for the section */
+  color: #ffffff; /* White text color */
+  padding: 40px;
+  border-radius: 8px; /* Slight rounding for a modern look */
+  margin: 20px auto;
+  max-width: 1200px; /* Center the section and limit its width */
+}
+
+/* Subheading Styles */
+#content .sub-heading {
+  font-size: 2em;
+  color: #ffcc00; /* Bright color for subheadings */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Content Styles */
+#content .content {
+  font-size: 1.2em;
+  line-height: 1.6;
+}
+
+/* Image Styles */
+#content .content img {
+  max-width: 100px; /* Small size for images */
+  height: auto;
+  margin: 20px 0;
+  cursor: pointer; /* Indicate that the image is clickable */
+  border-radius: 4px; /* Slight rounding for images */
+  transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover Effect for Images */
+#content .content img:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* Modal for Enlarged Image */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9); /* Black background with opacity */
+}
+
+.modal-content {
+  margin: 15% auto;
+  display: block;
+  max-width: 80%;
+  border-radius: 8px; /* Slight rounding for the modal */
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #ffffff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #ffcc00; /* Bright color on hover */
+  text-decoration: none;
+  cursor: pointer;
+}
